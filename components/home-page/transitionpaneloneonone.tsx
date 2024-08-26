@@ -4,16 +4,13 @@ import { useState } from "react";
 import { TransitionPanel } from "@/components/core/transition-panel";
 import { AnimatedCardBackgroundHover } from "@/components/ui/animatedcard";
 
-// Define the type for AnimatedCardBackgroundHover
 type AnimatedCardProps = {
   children: React.ReactNode;
 };
 
-// Create a typed version of AnimatedCardBackgroundHover
 const TypedAnimatedCardBackgroundHover: React.FC<AnimatedCardProps> =
   AnimatedCardBackgroundHover as React.FC<AnimatedCardProps>;
 
-// Define the type for ITEMS
 type Item = {
   title: string;
   subtitle: string;
