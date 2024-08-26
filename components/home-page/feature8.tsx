@@ -11,9 +11,9 @@ const Feature8 = () => {
     <Section>
       <Container className="grid items-stretch">
         <h3 className="!mt-0">
-          Value proposition: "At [Your Company Name], we're here to guide you
+          Value proposition: &quot;At [Your Company Name], we&apos;re here to guide you
           through the FODMAP journey, helping you rediscover the joy of eating
-          without discomfort." .
+          without discomfort.&quot; .
         </h3>
         <p className="text-muted-foreground">
           <Balancer>

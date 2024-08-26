@@ -91,12 +91,12 @@ export function NavBar() {
           <Link href="/quees">
             <Button variant="ghost">¿What is?</Button>
           </Link>
-          <Link href="/automation">
+          <Link href="/fodmap-benefits">
             <Button variant="ghost">Benefits</Button>
           </Link>
-          <Link href="/blog">
+          {/* <Link href="/blog">
             <Button variant="ghost">Blog</Button>
-          </Link>
+          </Link> */}
           <Link href="/contact">
             <Button variant="ghost">Contact</Button>
           </Link>

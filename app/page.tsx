@@ -1,3 +1,5 @@
+"use client";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Main, Section, Container } from "@/components/craft";
 import Hero5 from "@/components/home-page/hero5";
@@ -13,46 +15,76 @@ import CTA2 from "@/components/home-page/cta-three2";
 import TrailingImage from "@/components/animata/image/trailing-image";
 import RevealImageList from "@/components/animata/list/reveal-image";
 import ContactForm from "@/components/ContactForm";
+import Timeline from "@/components/home-page/timeline";
 
 export default function Page() {
+  const [activeSection, setActiveSection] = useState<string>("welcome");
+
+  const handleIntersection = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    },
+    []
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.1, // Detect when 10% of the section is visible
+    });
+
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [handleIntersection]);
+
   return (
-    <Main>
-      <Section id="welcome">
-        <Container>
-          <Hero5 />
-        </Container>
-      </Section>
-      <Section id="not-alone">
-        <Container>
-          <TrailingImage />
-          <Feature1 />
-        </Container>
-      </Section>
-      <Section id="what-is">
-        <Container>
-          <ShapeShifter />
-          <CTA />
-        </Container>
-      </Section>
-      <Section id="services">
-        <Container>
-          <CTA1 />
-          <RevealImageList />
-          <Feature5 />
-        </Container>
-      </Section>
-      <Section id="faq">
-        <Container>
-          <FAQ />
-          {/* <FractalGlass /> */}
-        </Container>
-      </Section>
-      <Section id="contact">
-        <Container>
-          <CTA2 />
-          <Footer />
-        </Container>
-      </Section>
-    </Main>
+    <div className="relative">
+      <div className="hidden lg:block fixed left-0 top-16 h-[calc(100vh-4rem)] w-48 z-10">
+        <Timeline className="h-full w-full" activeSection={activeSection} />
+      </div>
+      <Main>
+        <Section id="welcome">
+          <Container>
+            <Hero5 />
+          </Container>
+        </Section>
+        <Section id="not-alone">
+          <Container>
+            <TrailingImage />
+            <Feature1 />
+          </Container>
+        </Section>
+        <Section id="what-is">
+          <Container>
+            <ShapeShifter />
+            <CTA />
+          </Container>
+        </Section>
+        <Section id="services">
+          <Container>
+            <CTA1 />
+            <RevealImageList />
+            <Feature5 />
+          </Container>
+        </Section>
+        <Section id="faq">
+          <Container>
+            <FAQ />
+            {/* <FractalGlass /> */}
+          </Container>
+        </Section>
+        <Section id="contact">
+          <Container>
+            <CTA2 />
+            <Footer />
+          </Container>
+        </Section>
+      </Main>
+    </div>
   );
 }

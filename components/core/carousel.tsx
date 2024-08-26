@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   Children,
   ReactNode,
@@ -7,10 +7,10 @@ import {
   useEffect,
   useRef,
   useState,
-} from 'react';
-import { motion, Transition, useMotionValue } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+} from "react";
+import { motion, Transition, useMotionValue } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type CarouselContextType = {
   index: number;
@@ -26,7 +26,7 @@ const CarouselContext = createContext<CarouselContextType | undefined>(
 function useCarousel() {
   const context = useContext(CarouselContext);
   if (!context) {
-    throw new Error('useCarousel must be used within an CarouselProvider');
+    throw new Error("useCarousel must be used within an CarouselProvider");
   }
   return context;
 }
@@ -56,8 +56,8 @@ type Carousel = {
 function Carousel({ children, className }: Carousel) {
   return (
     <CarouselProvider>
-      <div className={cn('group/hover relative', className)}>
-        <div className='overflow-hidden'>{children}</div>
+      <div className={cn("group/hover relative", className)}>
+        <div className="overflow-hidden">{children}</div>
       </div>
     </CarouselProvider>
   );
@@ -79,20 +79,20 @@ function CarouselNavigation({
   return (
     <div
       className={cn(
-        'pointer-events-none absolute left-[-12.5%] top-1/2 flex w-[125%] -translate-y-1/2 justify-between px-2',
+        "pointer-events-none absolute left-[-12.5%] top-1/2 flex w-[125%] -translate-y-1/2 justify-between px-2",
         className
       )}
     >
       <button
-        type='button'
+        type="button"
         className={cn(
-          'pointer-events-auto h-fit w-fit rounded-full bg-zinc-50 p-2 transition-opacity duration-300 dark:bg-zinc-950',
+          "pointer-events-auto h-fit w-fit rounded-full bg-zinc-50 p-2 transition-opacity duration-300 dark:bg-zinc-950",
           alwaysShow
-            ? 'opacity-100'
-            : 'opacity-0 group-hover/hover:opacity-100',
+            ? "opacity-100"
+            : "opacity-0 group-hover/hover:opacity-100",
           alwaysShow
-            ? 'disabled:opacity-40'
-            : 'disabled:group-hover/hover:opacity-40',
+            ? "disabled:opacity-40"
+            : "disabled:group-hover/hover:opacity-40",
           classNameButton
         )}
         disabled={index === 0}
@@ -103,20 +103,20 @@ function CarouselNavigation({
         }}
       >
         <ChevronLeft
-          className='stroke-zinc-600 dark:stroke-zinc-50'
+          className="stroke-zinc-600 dark:stroke-zinc-50"
           size={16}
         />
       </button>
       <button
-        type='button'
+        type="button"
         className={cn(
-          'pointer-events-auto h-fit w-fit rounded-full bg-zinc-50 p-2 transition-opacity duration-300 dark:bg-zinc-950',
+          "pointer-events-auto h-fit w-fit rounded-full bg-zinc-50 p-2 transition-opacity duration-300 dark:bg-zinc-950",
           alwaysShow
-            ? 'opacity-100'
-            : 'opacity-0 group-hover/hover:opacity-100',
+            ? "opacity-100"
+            : "opacity-0 group-hover/hover:opacity-100",
           alwaysShow
-            ? 'disabled:opacity-40'
-            : 'disabled:group-hover/hover:opacity-40',
+            ? "disabled:opacity-40"
+            : "disabled:group-hover/hover:opacity-40",
           classNameButton
         )}
         disabled={index + 1 === itemsCount}
@@ -127,7 +127,7 @@ function CarouselNavigation({
         }}
       >
         <ChevronRight
-          className='stroke-zinc-600 dark:stroke-zinc-50'
+          className="stroke-zinc-600 dark:stroke-zinc-50"
           size={16}
         />
       </button>
@@ -149,22 +149,22 @@ function CarouselIndicator({
   return (
     <div
       className={cn(
-        'absolute bottom-0 z-10 flex w-full items-center justify-center',
+        "absolute bottom-0 z-10 flex w-full items-center justify-center",
         className
       )}
     >
-      <div className='flex space-x-2'>
+      <div className="flex space-x-2">
         {Array.from({ length: itemsCount }, (_, i) => (
           <button
             key={i}
-            type='button'
+            type="button"
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => setIndex(i)}
             className={cn(
-              'h-2 w-2 rounded-full transition-opacity duration-300',
+              "h-2 w-2 rounded-full transition-opacity duration-300",
               index === i
-                ? 'bg-zinc-950 dark:bg-zinc-50'
-                : 'bg-zinc-900/50 dark:bg-zinc-100/50',
+                ? "bg-zinc-950 dark:bg-zinc-50"
+                : "bg-zinc-900/50 dark:bg-zinc-100/50",
               classNameButton
             )}
           />
@@ -212,7 +212,7 @@ function CarouselContent({
     Array.from(childNodes).forEach((child) => observer.observe(child));
 
     return () => observer.disconnect();
-  }, [children, setItemsCount]);
+  }, [children]);
 
   useEffect(() => {
     if (!itemsLength) {
@@ -220,7 +220,7 @@ function CarouselContent({
     }
 
     setItemsCount(itemsLength);
-  }, [itemsLength]);
+  }, [itemsLength, setItemsCount]);
 
   const onDragEnd = () => {
     const x = dragX.get();
@@ -234,7 +234,7 @@ function CarouselContent({
 
   return (
     <motion.div
-      drag='x'
+      drag="x"
       dragConstraints={{
         left: 0,
         right: 0,
@@ -251,12 +251,12 @@ function CarouselContent({
         {
           damping: 18,
           stiffness: 90,
-          type: 'spring',
+          type: "spring",
           duration: 0.2,
         } || transition
       }
       className={cn(
-        'flex cursor-grab items-center active:cursor-grabbing',
+        "flex cursor-grab items-center active:cursor-grabbing",
         className
       )}
       ref={containerRef}
@@ -275,7 +275,7 @@ function CarouselItem({ children, className }: CarouselItemProps) {
   return (
     <motion.div
       className={cn(
-        'w-full min-w-0 shrink-0 grow-0 overflow-hidden',
+        "w-full min-w-0 shrink-0 grow-0 overflow-hidden",
         className
       )}
     >

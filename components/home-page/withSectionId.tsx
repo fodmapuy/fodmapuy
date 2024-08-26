@@ -1,38 +1,41 @@
 "use client";
+import React, { useEffect, useRef, useCallback } from "react";
 
-import React, { useEffect, useRef } from "react";
-
-export const withSectionId = (
-  WrappedComponent: React.ComponentType<any>,
+export const withSectionId = <P extends object>(
+  WrappedComponent: React.ComponentType<P>,
   sectionId: string
 ) => {
-  return (props: any) => {
+  const WithSectionId: React.FC<P> = (props) => {
     const ref = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            // You might want to dispatch an event or use a global state management solution here
-            // For now, we'll just use a custom event
-            window.dispatchEvent(
-              new CustomEvent("sectionChange", { detail: sectionId })
-            );
-          }
-        },
-        { threshold: 0.5 }
-      );
+    const observerCallback = useCallback(
+      (entries: IntersectionObserverEntry[]) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          window.dispatchEvent(
+            new CustomEvent("sectionChange", { detail: sectionId })
+          );
+        }
+      },
+      [] // Remove sectionId from the dependency array
+    );
 
-      if (ref.current) {
-        observer.observe(ref.current);
+    useEffect(() => {
+      const currentRef = ref.current;
+      const observer = new IntersectionObserver(observerCallback, {
+        threshold: 0.5,
+      });
+
+      if (currentRef) {
+        observer.observe(currentRef);
       }
 
       return () => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
+        if (currentRef) {
+          observer.unobserve(currentRef);
         }
       };
-    }, []);
+    }, [observerCallback]);
 
     return (
       <div ref={ref} id={sectionId}>
@@ -40,4 +43,10 @@ export const withSectionId = (
       </div>
     );
   };
+
+  WithSectionId.displayName = `WithSectionId(${
+    WrappedComponent.displayName || WrappedComponent.name || "Component"
+  })`;
+
+  return WithSectionId;
 };

@@ -1,6 +1,10 @@
 import { useEffect, useRef } from "react";
-import { useInView, useMotionValue, useSpring } from "framer-motion";
-
+import {
+  useInView,
+  useMotionValue,
+  useSpring,
+  MotionValue,
+} from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface CounterProps {
@@ -9,24 +13,20 @@ interface CounterProps {
    * number with commas.
    */
   format?: (value: number) => string;
-
   /**
    * The target value of the counter.
    */
   targetValue: number;
-
   /**
    * The direction of the counter. If "up", the counter will start from 0 and
    * go up to the target value. If "down", the counter will start from the target
    * value and go down to 0.
    */
   direction?: "up" | "down";
-
   /**
    * The delay in milliseconds before the counter starts counting.
    */
   delay?: number;
-
   /**
    * Additional classes for the counter.
    */
@@ -52,7 +52,6 @@ export default function Counter({
   const ref = useRef<HTMLSpanElement>(null);
   const isGoingUp = direction === "up";
   const motionValue = useMotionValue(isGoingUp ? 0 : targetValue);
-
   const springValue = useSpring(motionValue, {
     damping: 60,
     stiffness: 80,
@@ -63,20 +62,19 @@ export default function Counter({
     if (!isInView) {
       return;
     }
-
     const timer = setTimeout(() => {
       motionValue.set(isGoingUp ? targetValue : 0);
     }, delay);
-
     return () => clearTimeout(timer);
   }, [isInView, delay, isGoingUp, targetValue, motionValue]);
 
   useEffect(() => {
-    springValue.on("change", (value) => {
+    const unsubscribe = springValue.on("change", (latest: number) => {
       if (ref.current) {
-        ref.current.textContent = format ? format(value) : value;
+        ref.current.textContent = format(latest);
       }
     });
+    return () => unsubscribe();
   }, [springValue, format]);
 
   return (

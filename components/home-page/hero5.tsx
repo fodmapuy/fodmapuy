@@ -11,7 +11,7 @@ export default function Hero5() {
   return (
     <Section>
       <Container>
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center mt-16">
           <h1 className="!mb-0">
             <Balancer>Welcome to FODMAP</Balancer>
           </h1>

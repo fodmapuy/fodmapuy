@@ -1,13 +1,6 @@
-// React and Next.js imports
 import Link from "next/link";
-
-// Third-party library imports
 import Balancer from "react-wrap-balancer";
-
-// UI component imports
 import { Button } from "@/components/ui/button";
-
-// Custom components
 import { Section, Container } from "@/components/craft";
 
 const CTA2 = () => {

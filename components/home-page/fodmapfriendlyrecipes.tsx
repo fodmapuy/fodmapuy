@@ -24,7 +24,7 @@ const FodmapFriendlyRecipes = () => {
         <h3 className="rounded-md border bg-muted/50 p-4 text-muted-foreground">
           Discover a world of delicious, gut-friendly cuisine with our extensive
           collection of FODMAP-friendly recipes. Say goodbye to bland diets and
-          hello to flavorful, satisfying meals that won't upset your digestive
+          hello to flavorful, satisfying meals that won&apos;t upset your digestive
           system.
           <br />
           <br />
@@ -57,18 +57,18 @@ const FodmapFriendlyRecipes = () => {
           lactose-intolerant individuals
           <br />
           <br />
-          Why You'll Love Our FODMAP-Friendly Recipes:
+          Why You&apos;ll Love Our FODMAP-Friendly Recipes:
           <br />
           <br />
-          - Taste: Proof that 'restricted' doesn't mean 'boring' – our recipes
+          - Taste: Proof that &apos;restricted&apos; doesn&apos;t mean &apos;boring&apos; – our recipes
           are full of flavor - Variety: Never get stuck in a food rut with our
-          diverse recipe collection - Confidence: Know exactly what's in your
+          diverse recipe collection - Confidence: Know exactly what&apos;s in your
           food and how it fits into your FODMAP plan - Simplicity: Easy-to-find
           ingredients and straightforward cooking methods - Adaptability: Learn
           how to modify your favorite dishes to be FODMAP-friendly
           <br />
           <br />
-          Whether you're a culinary novice or a seasoned chef, our
+          Whether you&apos;re a culinary novice or a seasoned chef, our
           FODMAP-friendly recipes will inspire you to create delicious,
           gut-friendly meals. Rediscover the joy of eating without fear of
           digestive discomfort!

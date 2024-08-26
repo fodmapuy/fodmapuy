@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const data = [
   {
@@ -46,10 +47,10 @@ export default function AvatarList({
   size?: "sm" | "md" | "lg";
   className?: string;
 }) {
-  const sizes: Record<"sm" | "md" | "lg", string> = {
-    lg: "m-3 size-6",
-    md: "m-2 size-12",
-    sm: "m-1 size-8",
+  const sizes: Record<"sm" | "md" | "lg", { class: string; size: number }> = {
+    lg: { class: "m-3 size-6", size: 64 },
+    md: { class: "m-2 size-12", size: 48 },
+    sm: { class: "m-1 size-8", size: 32 },
   };
 
   return (
@@ -62,12 +63,14 @@ export default function AvatarList({
           <div className="relative overflow-hidden rounded-full bg-white">
             <div className="bg-size pointer-events-none absolute h-full w-full animate-bg-position from-violet-500 from-30% via-cyan-400 via-50% to-pink-500 to-80% bg-[length:300%_auto] opacity-15 group-hover:bg-gradient-to-r" />
             <div className="z-1 blur-lg" />
-            <img
+            <Image
               src={item.image}
               alt={item.name}
+              width={sizes[size].size}
+              height={sizes[size].size}
               className={cn(
                 "rounded-full object-cover",
-                sizes[size] ?? sizes.md
+                sizes[size].class
               )}
             />
           </div>

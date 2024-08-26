@@ -61,12 +61,12 @@ const Consultations = () => {
           How It Works:
           <br />
           <br />
-          1. Initial Consultation: We'll discuss your symptoms, food
+          1. Initial Consultation: We&apos;ll discuss your symptoms, food
           preferences, and lifestyle. 2. Customization: Our FODMAP-trained
-          nutritionists create your personalized plan. 3. Implementation: You'll
+          nutritionists create your personalized plan. 3. Implementation: You&apos;ll
           receive weekly meal plans, recipes, and shopping lists. 4. Support:
           Regular check-ins to adjust your plan and answer any questions. 5.
-          Progress: As you identify triggers, we'll help you expand your diet
+          Progress: As you identify triggers, we&apos;ll help you expand your diet
           safely.
           <br />
           <br />

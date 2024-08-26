@@ -1,14 +1,57 @@
 import Link from "next/link";
-
 import { ArrowRight } from "lucide-react";
-
 import { Section, Container } from "@/components/craft";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import FlippingCard from "../animata/list/flipping-cards";
 import { FODMAPChart } from "@/components/ui/chartibs";
 
+// Define the correct type for the FlippingCard props
+interface CardDetailsProps {
+  font: string;
+  image: string;
+  title: string;
+}
+
 const Hero6 = () => {
+  const cardDetails: CardDetailsProps[] = [
+    {
+      font: "Fermentable",
+      image:
+        "https://images.unsplash.com/photo-1718889874468-3a56b84bb2e7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "F",
+    },
+    {
+      font: "Oligosaccharides",
+      image:
+        "https://plus.unsplash.com/premium_photo-1717916843908-7bbee16bad20?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "O",
+    },
+    {
+      font: "Disaccharides",
+      image:
+        "https://images.unsplash.com/photo-1718743256288-e77382a88aaf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "D",
+    },
+    {
+      font: "Monosaccharides",
+      image:
+        "https://images.unsplash.com/photo-1718889874468-3a56b84bb2e7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "M",
+    },
+    {
+      font: "And",
+      image:
+        "https://images.unsplash.com/photo-1718792679559-5cfd607bb564?q=80&w=1956&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "A",
+    },
+    {
+      font: "Polyols",
+      image:
+        "https://images.unsplash.com/photo-1718397172443-48185c6bb4e1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "P",
+    },
+  ];
   return (
     <Section className="relative backdrop-blur-sm">
       <Container className="flex flex-col gap-8">
@@ -27,8 +70,8 @@ const Hero6 = () => {
           mannitol).
           <br />
           <br /> A detailed description of each of these, including the foods
-          they are found in, is provided below. A diet low in FODMAPs (“a Low
-          FODMAP Diet”) is scientifically proven1, and is now used
+          they are found in, is provided below. A diet low in FODMAPs (&ldquo;a
+          Low FODMAP Diet&rdquo;) is scientifically proven1, and is now used
           internationally, as the most effective dietary therapy for Irritable
           Bowel Syndrome (IBS) and symptoms of an irritable bowel. Such symptoms
           include excessive wind (flatus), abdominal pain, bloating and
@@ -42,46 +85,9 @@ const Hero6 = () => {
           <Button>Get Started</Button>
           <Button variant="outline">Learn More</Button>
         </div>
-        <FlippingCard
-          list={[
-            {
-              font: "Fermentable",
-              image:
-                "https://images.unsplash.com/photo-1718889874468-3a56b84bb2e7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              title: "F",
-            },
-            {
-              font: "Oligosaccharides",
-              image:
-                "https://plus.unsplash.com/premium_photo-1717916843908-7bbee16bad20?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              title: "O",
-            },
-            {
-              font: "Disaccharides",
-              image:
-                "https://images.unsplash.com/photo-1718743256288-e77382a88aaf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              title: "D",
-            },
-            {
-              font: "Monosaccharides",
-              image:
-                "https://images.unsplash.com/photo-1718889874468-3a56b84bb2e7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              title: "M",
-            },
-            {
-              font: "And",
-              image:
-                "https://images.unsplash.com/photo-1718792679559-5cfd607bb564?q=80&w=1956&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              title: "A",
-            },
-            {
-              font: "Polyols",
-              image:
-                "https://images.unsplash.com/photo-1718397172443-48185c6bb4e1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              title: "P",
-            },
-          ]}
-        />
+
+        <FlippingCard list={cardDetails} />
+
         <h3 className="rounded-md border bg-muted/50 p-4 text-muted-foreground">
           How do FODMAPs trigger symptoms of IBS?
           <br />

@@ -1,40 +1,58 @@
 "use client";
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
 import { TransitionPanel } from "@/components/core/transition-panel";
 import { AnimatedCardBackgroundHover } from "@/components/ui/animatedcard";
 
+// Define the type for AnimatedCardBackgroundHover
+type AnimatedCardProps = {
+  children: React.ReactNode;
+};
+
+// Create a typed version of AnimatedCardBackgroundHover
+const TypedAnimatedCardBackgroundHover: React.FC<AnimatedCardProps> =
+  AnimatedCardBackgroundHover as React.FC<AnimatedCardProps>;
+
+// Define the type for ITEMS
+type Item = {
+  title: string;
+  subtitle: string;
+  content: string | string[];
+};
+
+const ITEMS: Item[] = [
+  {
+    title: "Personalized meal plans",
+    subtitle: "Refining Visual Harmony",
+    content: [
+      "Say goodbye to digestive discomfort and hello to delicious, gut-friendly meals! Our Personalized Meal Plans are designed to take the guesswork out of following the FODMAP diet, ensuring you enjoy every bite while supporting your digestive health.",
+    ],
+  },
+  {
+    title: "One on one consultations",
+    subtitle: "Narrative and Expression",
+    content:
+      "Delve into how motion can be used as an artistic tool to tell stories and evoke emotions, making digital interactions feel more human and expressive.",
+  },
+  {
+    title: "Delicious low FODMAP recipes",
+    subtitle: "Mastering Motion Tools",
+    content:
+      "Gain proficiency in advanced techniques such as physics-based animations, 3D transformations, and complex sequencing to elevate your design skills and implementation.",
+  },
+];
+
 export function TabsTransitionOneOnOne() {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const ITEMS = [
-    {
-      title: "Personalized meal plans",
-      subtitle: "Refining Visual Harmony",
-      content: [
-        "Say goodbye to digestive discomfort and hello to delicious, gut-friendly meals! Our Personalized Meal Plans are designed to take the guesswork out of following the FODMAP diet, ensuring you enjoy every bite while supporting your digestive health.",
-      ],
-    },
-    {
-      title: "One on one consultations",
-      subtitle: "Narrative and Expression",
-      content:
-        "Delve into how motion can be used as an artistic tool to tell stories and evoke emotions, making digital interactions feel more human and expressive.",
-    },
-    {
-      title: "Delicious low FODMAP recipes",
-      subtitle: "Mastering Motion Tools",
-      content:
-        "Gain proficiency in advanced techniques such as physics-based animations, 3D transformations, and complex sequencing to elevate your design skills and implementation.",
-    },
-  ];
 
   return (
     <div>
       <div className="mb-4 flex space-x-2">
         {ITEMS.map((item, index) => (
           <button
-            key={index}
+            key={item.title}
             onClick={() => setActiveIndex(index)}
+            type="button"
             className={`rounded-md px-3 py-1 text-sm font-medium ${
               activeIndex === index
                 ? "bg-[#27AE60] text-white"
@@ -56,14 +74,14 @@ export function TabsTransitionOneOnOne() {
           }}
         >
           {ITEMS.map((item, index) => (
-            <div key={index} className="py-2">
+            <div key={item.title} className="py-2">
               <h3 className="mb-2 font-medium text-zinc-800 dark:text-zinc-100">
                 {item.subtitle}
               </h3>
               <div className="text-zinc-600 dark:text-zinc-400">
                 {Array.isArray(item.content) ? (
-                  item.content.map((paragraph, pIndex) => (
-                    <p key={pIndex} className="mb-2">
+                  item.content.map((paragraph) => (
+                    <p key={paragraph} className="mb-2">
                       {paragraph}
                     </p>
                   ))
@@ -72,7 +90,7 @@ export function TabsTransitionOneOnOne() {
                 )}
               </div>
               {index === 0 && (
-                <AnimatedCardBackgroundHover>
+                <TypedAnimatedCardBackgroundHover>
                   <div className="p-4">
                     <h4 className="text-lg font-semibold mb-2">
                       Personalized Meal Plans
@@ -82,7 +100,7 @@ export function TabsTransitionOneOnOne() {
                       our expertly crafted meal plans.
                     </p>
                   </div>
-                </AnimatedCardBackgroundHover>
+                </TypedAnimatedCardBackgroundHover>
               )}
             </div>
           ))}
