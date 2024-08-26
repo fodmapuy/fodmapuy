@@ -28,7 +28,7 @@ const Hero3 = () => {
             <div className="grid gap-2 md:flex">
               <p className="opacity-50">Registra una consulta con nosotras. </p>
               <Link className="transition-all hover:opacity-70" href="#">
-                Contacto -{`>`}
+                Contact -{`>`}
               </Link>
             </div>
             <p className="mt-4 text-xs">

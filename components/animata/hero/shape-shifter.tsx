@@ -60,8 +60,8 @@ const placeholderChildren = (
 );
 
 export default function ShapeShifter({
-  prefix = "Hinchazon",
-  suffix = "Malestar",
+  prefix = "Bloating",
+  suffix = "Uneasyness",
   className,
   containerClassName,
   children,

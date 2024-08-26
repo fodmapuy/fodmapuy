@@ -12,6 +12,7 @@ import { FractalGlass } from "@/components/ui/fractalglass";
 import CTA2 from "@/components/home-page/cta-three2";
 import TrailingImage from "@/components/animata/image/trailing-image";
 import RevealImageList from "@/components/animata/list/reveal-image";
+import ContactForm from "@/components/ContactForm";
 
 export default function Page() {
   return (
@@ -43,7 +44,7 @@ export default function Page() {
       <Section id="faq">
         <Container>
           <FAQ />
-          <FractalGlass />
+          {/* <FractalGlass /> */}
         </Container>
       </Section>
       <Section id="contact">

@@ -16,7 +16,7 @@ const Consultations = () => {
             className="group flex items-center gap-1"
             href="https://9d8.dev"
           >
-            Contacto
+            Contact
             <ArrowRight className="w-4 transition-all group-hover:-rotate-45" />
           </Link>
         </Badge>

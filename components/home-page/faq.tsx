@@ -17,25 +17,25 @@ type FAQItem = {
 
 const content: FAQItem[] = [
   {
-    question: "Lorem ipsum dolor sit amet?",
+    question: "What is the FODMAP diet?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    link: "https://google.com",
+      "The FODMAP diet is an elimination diet that helps identify trigger foods for people with irritable bowel syndrome (IBS) and other digestive disorders. FODMAP stands for Fermentable Oligosaccharides, Disaccharides, Monosaccharides, and Polyols, which are types of carbohydrates that can be poorly absorbed in the small intestine.",
+    link: "https://www.monashfodmap.com/about-fodmap-and-ibs/",
   },
   {
-    question: "Ut enim ad minim veniam?",
+    question: "How long does the FODMAP diet typically last?",
     answer:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "The FODMAP diet typically consists of three phases: elimination (2-6 weeks), reintroduction (6-8 weeks), and personalization (ongoing). The entire process usually takes about 3-4 months, but can vary depending on individual needs and responses.",
   },
   {
-    question: "Duis aute irure dolor in reprehenderit?",
+    question: "Can I follow the FODMAP diet if I'm vegetarian or vegan?",
     answer:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "Yes, it's possible to follow the FODMAP diet as a vegetarian or vegan, but it requires careful planning to ensure adequate nutrition. Many plant-based protein sources are high in FODMAPs, so working with a registered dietitian is recommended to help balance your dietary needs and restrictions.",
   },
   {
-    question: "Excepteur sint occaecat cupidatat non proident?",
+    question: "Will I need to follow the FODMAP diet forever?",
     answer:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "No, the FODMAP diet is not meant to be followed long-term in its restrictive phase. The goal is to identify your specific trigger foods and then reintroduce as many foods as possible while managing symptoms. Many people find they can tolerate some high FODMAP foods in small amounts after completing the diet phases.",
   },
 ];
 

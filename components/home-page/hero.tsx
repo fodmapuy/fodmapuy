@@ -16,7 +16,7 @@ const Hero = () => {
         <div className="flex w-full justify-between">
           <div className="">
             <h1 className="mb-4 text-3xl font-normal md:text-6xl">
-              <Link className="transition-all hover:opacity-70" href="#">
+              <Link className="transition-all hover:opacity-70" href="/contact">
                 Welcome to FODMAP
               </Link>
             </h1>

@@ -24,7 +24,7 @@ const Hero1 = () => {
             size={"sm"}
             variant={"outline"}
           >
-            <Link className="not-prose" href="https://9d8.dev">
+            <Link className="not-prose" href="/contact">
               Lorem ipsum dolor sit amet <ArrowRight className="w-4" />
             </Link>
           </Button>

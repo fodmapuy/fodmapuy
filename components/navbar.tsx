@@ -70,6 +70,13 @@ export function NavBar() {
                   </Button>
                 </Link>
               </DialogClose>
+              <DialogClose asChild>
+                <Link href="/contact">
+                  <Button variant="outline" className="w-full">
+                    Contact
+                  </Button>
+                </Link>
+              </DialogClose>
             </div>
           </SheetContent>
         </Dialog>
@@ -82,16 +89,16 @@ export function NavBar() {
         </NavigationMenu>
         <div className="flex items-center gap-2 max-[825px]:hidden">
           <Link href="/quees">
-            <Button variant="ghost">¿Qué es?</Button>
+            <Button variant="ghost">¿What is?</Button>
           </Link>
           <Link href="/automation">
-            <Button variant="ghost">Beneficios</Button>
+            <Button variant="ghost">Benefits</Button>
           </Link>
           <Link href="/blog">
             <Button variant="ghost">Blog</Button>
           </Link>
-          <Link href="/projects">
-            <Button variant="ghost">Contacto</Button>
+          <Link href="/contact">
+            <Button variant="ghost">Contact</Button>
           </Link>
           <Link href="/">
             <Button variant="ghost">

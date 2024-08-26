@@ -34,10 +34,7 @@ export default function Footer() {
               ></Image>
             </Link>
             <p>
-              <Balancer>
-                brijr/components is a collection of Next.js, React, Typescript
-                components for building landing pages and websites.
-              </Balancer>
+              <Balancer>FODMAPUY.</Balancer>
             </p>
           </div>
           <div className="flex flex-col gap-2">
@@ -66,8 +63,8 @@ export default function Footer() {
             </Button>
           </div>
           <p className="text-muted-foreground">
-            © <a href="https://github.com/brijr/components">brijr/components</a>
-            . All rights reserved. 2024-present.
+            © <a href="https://github.com/brijr/components">FODMAP UY</a>. All
+            rights reserved. 2024-.
           </p>
         </Container>
       </Section>

@@ -13,11 +13,8 @@ const Hero6 = () => {
     <Section className="relative backdrop-blur-sm">
       <Container className="flex flex-col gap-8">
         <Badge className="not-prose w-fit" variant="outline">
-          <Link
-            className="group flex items-center gap-1"
-            href="https://9d8.dev"
-          >
-            Contacto
+          <Link className="group flex items-center gap-1" href="/contact">
+            Contact
             <ArrowRight className="w-4 transition-all group-hover:-rotate-45" />
           </Link>
         </Badge>

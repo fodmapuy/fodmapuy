@@ -24,7 +24,7 @@ export default function Hero5() {
             size="sm"
             variant="outline"
           >
-            <Link href="https://9d8.dev">
+            <Link href="/contact">
               Welcome to FODMAP
               <ArrowRight className="ml-2 w-4" />
             </Link>
