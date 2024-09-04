@@ -49,44 +49,44 @@ function RevealImageListItem({ text, images }: ShowImageListItemProps) {
   );
 }
 
-export default function RevealImageList() {
+export default function RevealImageListEs() {
   const items: ShowImageListItemProps[] = [
     {
-      text: "We're here to guide you through the FODMAP journey",
+      text: "Estamos aquí para guiarte en tu camino FODMAP",
       images: [
         {
           src: "https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 1",
+          alt: "Imagen 1",
         },
         {
           src: "https://images.unsplash.com/photo-1567262439850-1d4dc1fefdd0?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 2",
+          alt: "Imagen 2",
         },
       ],
     },
     {
-      text: "Helping you rediscover",
+      text: "Ayudándote a redescubrir",
       images: [
         {
           src: "https://images.unsplash.com/photo-1587440871875-191322ee64b0?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 1",
+          alt: "Imagen 1",
         },
         {
           src: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 2",
+          alt: "Imagen 2",
         },
       ],
     },
     {
-      text: "The joy of eating without discomfort.",
+      text: "El placer de comer sin molestias.",
       images: [
         {
           src: "https://images.unsplash.com/photo-1575995872537-3793d29d972c?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 1",
+          alt: "Imagen 1",
         },
         {
           src: "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
-          alt: "Image 2",
+          alt: "Imagen 2",
         },
       ],
     },
@@ -95,7 +95,7 @@ export default function RevealImageList() {
   return (
     <div className="flex flex-col items-center gap-1 rounded-sm bg-background px-8 py-4 w-full my-16">
       <h3 className="text-sm font-black uppercase text-muted-foreground text-center w-full">
-        We are here.
+        Estamos aquí.
       </h3>
       {items.map((item, index) => (
         <RevealImageListItem

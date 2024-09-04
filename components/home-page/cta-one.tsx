@@ -28,14 +28,14 @@ const CTA1 = () => {
             improving gut health and quality of life for many individuals.
           </Balancer>
         </h4>
-        <div className="not-prose flex items-center gap-2">
+        {/* <div className="not-prose flex items-center gap-2">
           <Button asChild>
-            <Link href="#">Learn More</Link>
+            <Link href="en/quees">Learn More</Link>
           </Button>
           <Button variant="link" asChild>
-            <Link href="#">Book a Consultation {"->"}</Link>
+            <Link href="/en/contact">Book a Consultation {"->"}</Link>
           </Button>
-        </div>
+        </div> */}
       </Container>
     </Section>
   );

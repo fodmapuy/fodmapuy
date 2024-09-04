@@ -81,10 +81,10 @@ const Hero6 = () => {
           concentration. FODMAP is an acronym that stands for:
         </h3>
 
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <Button>Get Started</Button>
           <Button variant="outline">Learn More</Button>
-        </div>
+        </div> */}
 
         <FlippingCard list={cardDetails} />
 

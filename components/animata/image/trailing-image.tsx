@@ -8,6 +8,7 @@ import React, {
   useRef,
 } from "react";
 import { motion, useAnimation } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 import { useMousePosition } from "@/components/hooks/useMousePosition";
 import { getDistance, lerp } from "@/lib/utils";
@@ -118,7 +119,15 @@ const images = [
   "https://assets.lummi.ai/assets/QmRy3tpFDCbgA3CQgRpySTGN6tNdomQE96rMpV31HeBUUd?auto=format&w=500",
 ];
 
-const TrailingImage = () => {
+const translations = {
+  en: "Your Path to Digestive Wellness and Life Balance",
+  es: "Tu camino hacia el bienestar digestivo y el equilibrio en la vida"
+};
+
+const TrailingImage: React.FC = () => {
+  const pathname = usePathname();
+  const language = pathname.startsWith('/es') ? 'es' : 'en';
+
   const containerRef = useRef<HTMLDivElement>(null);
   // Create a maximum of 20 trails for a smoother experience
   const trailsRef = useRef(
@@ -187,7 +196,7 @@ const TrailingImage = () => {
       ))}
       <h3 className="text-muted-foreground flex w-full flex-1 items-center justify-center p-4 text-center">
         <div className="max-w-sm">
-          Your Path to Digestive Wellness and Life Balance
+          {translations[language]}
         </div>
       </h3>
     </div>

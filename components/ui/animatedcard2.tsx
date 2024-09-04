@@ -1,7 +1,11 @@
 import AnimatedBackground from "@/components/core/animated-background";
 
-export function AnimatedCardBackgroundHover2() {
-  const ITEMS = [
+interface AnimatedCardBackgroundHover2Props {
+  language: 'en' | 'es';
+}
+
+export function AnimatedCardBackgroundHover2({ language }: AnimatedCardBackgroundHover2Props) {
+  const ITEMS_EN = [
     {
       id: 1,
       title: "Expert Support",
@@ -35,6 +39,43 @@ export function AnimatedCardBackgroundHover2() {
         "Learn to identify trigger foods and expand your diet safely",
     },
   ];
+
+  const ITEMS_ES = [
+    {
+      id: 1,
+      title: "Soporte Experto",
+      description: "Trabaja directamente con dietistas capacitados en FODMAP",
+    },
+    {
+      id: 2,
+      title: "Enfoque Personalizado",
+      description:
+        "Consejos adaptados a tus síntomas y estilo de vida únicos",
+    },
+    {
+      id: 3,
+      title: "Evaluación Integral",
+      description: "Análisis en profundidad de tu dieta y salud digestiva",
+    },
+    {
+      id: 4,
+      title: "Guía Paso a Paso",
+      description: "Navega las fases de la dieta FODMAP con confianza",
+    },
+    {
+      id: 5,
+      title: "Apoyo Continuo",
+      description: "Chequeos regulares para monitorear el progreso y ajustar tu plan",
+    },
+    {
+      id: 6,
+      title: "Educación",
+      description:
+        "Aprende a identificar alimentos desencadenantes y expandir tu dieta de forma segura",
+    },
+  ];
+
+  const ITEMS = language === 'en' ? ITEMS_EN : ITEMS_ES;
 
   return (
     <div className="grid grid-cols-2 p-10 md:grid-cols-3">

@@ -27,16 +27,16 @@ const FODMAPBenefits = () => {
         <FODMAPBenefitsStack />
 
         <h3 className="rounded-md border bg-muted/50 p-4 text-muted-foreground">
-          It&apos;s important to note that the FODMAP diet should be undertaken with
-          the guidance of a healthcare professional or registered dietitian.
-          They can ensure you&apos;re following the diet correctly and getting all
-          the nutrients you need.
+          It&apos;s important to note that the FODMAP diet should be undertaken
+          with the guidance of a healthcare professional or registered
+          dietitian. They can ensure you&apos;re following the diet correctly
+          and getting all the nutrients you need.
         </h3>
 
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <Button>Get Started</Button>
           <Button variant="outline">Learn More</Button>
-        </div>
+        </div> */}
       </Container>
     </Section>
   );

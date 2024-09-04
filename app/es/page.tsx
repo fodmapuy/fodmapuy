@@ -1,7 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useScroll } from "framer-motion";
-import { useRouter } from "next/navigation";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Main, Section, Container } from "@/components/craft";
 import Hero5 from "@/components/home-page/hero5-es";
@@ -15,28 +13,52 @@ import Footer from "@/components/home-page/footer-es";
 import { FractalGlass } from "@/components/ui/fractalglass";
 import CTA2 from "@/components/home-page/cta-three2-es";
 import TrailingImage from "@/components/animata/image/trailing-image";
-import RevealImageList from "@/components/animata/list/reveal-image";
-import ContactForm from "@/components/ContactFormEs";
+import RevealImageListEs from "@/components/animata/list/reveal-image.es";
+import ContactForm from "@/components/ContactForm";
 import Timeline from "@/components/home-page/timeline";
+import Chart15Es from "@/components/ui/chart15.es";
 
 export default function Page() {
-  const { scrollY } = useScroll();
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const router = useRouter();
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  const handleIntersection = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target.id !== activeSection) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    },
+    [activeSection]
+  );
 
   useEffect(() => {
-    const unsubscribe = scrollY.onChange(setScrollPosition);
-    return () => unsubscribe();
-  }, [scrollY]);
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.1, // Detect when 10% of the section is visible
+    });
 
-  useEffect(() => {
-    router.push("/es");
-  }, [router]);
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    // Set initial active section to "welcome" if no section is intersecting
+    if (!activeSection) {
+      const isAnyIntersecting = Array.from(sections).some((section) =>
+        observer
+          .takeRecords()
+          .find((entry) => entry.target === section && entry.isIntersecting)
+      );
+      if (!isAnyIntersecting) {
+        setActiveSection("welcome");
+      }
+    }
+
+    return () => observer.disconnect();
+  }, [handleIntersection, activeSection]);
 
   return (
     <div className="relative">
       <div className="hidden lg:block fixed left-0 top-16 h-[calc(100vh-4rem)] w-48 z-10">
-        <Timeline className="h-full w-full" scrollPosition={scrollPosition} />
+        <Timeline className="h-full w-full" activeSection={activeSection} />
       </div>
       <Main>
         <Section id="welcome">
@@ -59,13 +81,19 @@ export default function Page() {
         <Section id="services">
           <Container>
             <CTA1 />
-            <RevealImageList />
+            <RevealImageListEs />
             <Feature5 />
           </Container>
         </Section>
+        {/* <Section id="statistics">
+          <Container>
+            <Chart15Es />
+          </Container>
+        </Section> */}
         <Section id="faq">
           <Container>
             <FAQ />
+            {/* <FractalGlass /> */}
           </Container>
         </Section>
         <Section id="contact">

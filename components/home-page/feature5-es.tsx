@@ -18,44 +18,44 @@ const featureText: FeatureText[] = [
     icon: <Coins className="h-6 w-6" />,
     title: "0",
     href: "/personalizedmealplans",
-    description: "Personalized meal plans",
-    cta: "Learn More",
+    description: "Planes de comidas personalizados",
+    cta: "Aprende Más",
   },
   {
     icon: <Coins className="h-6 w-6" />,
     title: "1",
     href: "/1on1consultations",
-    description: "One-on-one consultations",
-    cta: "Learn More",
+    description: "Consultas personalizadas",
+    cta: "Aprende Más",
   },
   {
     icon: <Coins className="h-6 w-6" />,
     title: "2",
     href: "/FODMAPFriendlyRecipes",
-    description: "Delicious low FODMAP recipes",
-    cta: "Learn More",
+    description: "Deliciosas recetas bajas en FODMAP",
+    cta: "Aprende Más",
   },
   {
     icon: <Coins className="h-6 w-6" />,
     title: "3",
     href: "/",
-    description: "Educational resources on the FODMAP diet",
-    cta: "Learn More",
+    description: "Recursos educativos sobre la dieta FODMAP",
+    cta: "Aprende Más",
   },
 ];
 
-const Feature5 = () => {
+const Feature5Es = () => {
   return (
     <Section className="border-b">
       <Container className="not-prose">
         <div className="flex flex-col gap-6">
           <h3 className="text-4xl">
-            <Balancer>Services Offered</Balancer>
+            <Balancer>Servicios Ofrecidos</Balancer>
           </h3>
           <h4 className="text-2xl font-light opacity-70">
-            <Balancer>Steps: </Balancer>
+            <Balancer>En qué consiste: </Balancer>
           </h4>
-          <TabsTransitionPanel language="en" />
+          <TabsTransitionPanel language="es" />
           {/* <div className="mt-6 grid gap-6 md:mt-12 md:grid-cols-2">
             {featureText.map(
               ({ icon, title, description, href, cta }, index) => (
@@ -84,4 +84,4 @@ const Feature5 = () => {
   );
 };
 
-export default Feature5;
+export default Feature5Es;

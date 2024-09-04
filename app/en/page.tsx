@@ -1,37 +1,31 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useScroll } from "framer-motion";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Main, Section, Container } from "@/components/craft";
-import Hero5 from "@/components/home-page/hero5-es";
-import Feature1 from "@/components/home-page/feature1-es";
+import Hero5 from "@/components/home-page/hero5";
+import Feature1 from "@/components/home-page/feature1";
 import ShapeShifter from "@/components/animata/hero/shape-shifter";
-import CTA from "@/components/home-page/cta-three-es";
-import CTA1 from "@/components/home-page/cta-one-es";
-import Feature5 from "@/components/home-page/feature5-es";
-import FAQ from "@/components/home-page/faq-es";
-import Footer from "@/components/home-page/footer-es";
+import CTA from "@/components/home-page/cta-three";
+import CTA1 from "@/components/home-page/cta-one";
+import Feature5 from "@/components/home-page/feature5";
+import FAQ from "@/components/home-page/faq";
+import Footer from "@/components/home-page/footer";
 import { FractalGlass } from "@/components/ui/fractalglass";
-import CTA2 from "@/components/home-page/cta-three2-es";
+import CTA2 from "@/components/home-page/cta-three2";
 import TrailingImage from "@/components/animata/image/trailing-image";
 import RevealImageList from "@/components/animata/list/reveal-image";
-import ContactForm from "@/components/ContactFormEs";
+import ContactForm from "@/components/ContactForm";
 import Timeline from "@/components/home-page/timeline";
 
 export default function Page() {
   const { scrollY } = useScroll();
   const [scrollPosition, setScrollPosition] = useState(0);
-  const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = scrollY.onChange(setScrollPosition);
     return () => unsubscribe();
   }, [scrollY]);
-
-  useEffect(() => {
-    router.push("/es");
-  }, [router]);
 
   return (
     <div className="relative">
@@ -52,7 +46,7 @@ export default function Page() {
         </Section>
         <Section id="what-is">
           <Container>
-            <ShapeShifter language="es" />
+            <ShapeShifter language="en" />
             <CTA />
           </Container>
         </Section>
@@ -66,6 +60,7 @@ export default function Page() {
         <Section id="faq">
           <Container>
             <FAQ />
+            {/* <FractalGlass /> */}
           </Container>
         </Section>
         <Section id="contact">

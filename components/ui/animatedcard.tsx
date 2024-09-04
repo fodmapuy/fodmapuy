@@ -1,7 +1,11 @@
 import AnimatedBackground from "@/components/core/animated-background";
 
-export function AnimatedCardBackgroundHover() {
-  const ITEMS = [
+interface AnimatedCardBackgroundHoverProps {
+  language: 'en' | 'es';
+}
+
+export function AnimatedCardBackgroundHover({ language }: AnimatedCardBackgroundHoverProps) {
+  const ITEMS_EN = [
     {
       id: 1,
       title: "Tailored Nutrition",
@@ -33,6 +37,41 @@ export function AnimatedCardBackgroundHover() {
       description: "Guidance from FODMAP-trained dietitians",
     },
   ];
+
+  const ITEMS_ES = [
+    {
+      id: 1,
+      title: "Nutrición Personalizada",
+      description: "Adaptada a tus necesidades y preferencias",
+    },
+    {
+      id: 2,
+      title: "Variedad",
+      description: "Opciones de comidas diversas y emocionantes",
+    },
+    {
+      id: 3,
+      title: "Simplicidad",
+      description: "Recetas e instrucciones fáciles de seguir",
+    },
+    {
+      id: 4,
+      title: "Seguimiento del Progreso",
+      description: "Monitorea las mejoras en tu salud digestiva",
+    },
+    {
+      id: 5,
+      title: "Flexibilidad",
+      description: "Planes adaptables a tu estilo de vida",
+    },
+    {
+      id: 6,
+      title: "Soporte Experto",
+      description: "Orientación de dietistas capacitados en FODMAP",
+    },
+  ];
+
+  const ITEMS = language === 'en' ? ITEMS_EN : ITEMS_ES;
 
   return (
     <div className="grid grid-cols-2 p-10 md:grid-cols-3">

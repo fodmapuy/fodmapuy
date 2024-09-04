@@ -9,6 +9,7 @@ interface ShapeShifterProps {
   className?: string;
   containerClassName?: string;
   children?: ReactNode;
+  language?: "en" | "es"; // Add language prop
 }
 
 const images = [
@@ -42,7 +43,7 @@ const placeholderChildren = (
   >
     {images.map((image) => (
       <div
-        key={image.src} // Use the image src as a unique key
+        key={image.src}
         className="relative"
         style={{ width: "300px", height: "200px" }}
       >
@@ -60,12 +61,29 @@ const placeholderChildren = (
 );
 
 export default function ShapeShifter({
-  prefix = "Bloating",
-  suffix = "Uneasyness",
+  prefix,
+  suffix,
   className,
   containerClassName,
   children,
+  language = "en", // Default to English
 }: ShapeShifterProps) {
+  // Define translations
+  const translations = {
+    en: {
+      prefix: "Bloating",
+      suffix: "Uneasyness",
+    },
+    es: {
+      prefix: "Pesado",
+      suffix: "Incomodidad",
+    },
+  };
+
+  // Use the correct translation based on language
+  const { prefix: defaultPrefix, suffix: defaultSuffix } =
+    translations[language];
+
   return (
     <div
       className={cn(
@@ -78,7 +96,9 @@ export default function ShapeShifter({
         justifyContent: "center",
       }}
     >
-      <div className="flex items-center justify-center">{prefix}</div>
+      <div className="flex items-center justify-center">
+        {prefix || defaultPrefix}
+      </div>
       <div
         className={cn(
           "relative animate-[shape-shift] overflow-hidden p-0 transition-all ease-in-out direction-alternate repeat-infinite group-hover:[animation-play-state:paused]",
@@ -86,17 +106,19 @@ export default function ShapeShifter({
         )}
         style={{
           animationDuration: "8s",
-          width: "300px", // Set a fixed width
-          height: "200px", // Set a fixed height
+          width: "300px",
+          height: "200px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          transformOrigin: "center", // Ensure transform originates from the center
+          transformOrigin: "center",
         }}
       >
         {children ?? placeholderChildren}
       </div>
-      <div className="flex items-center justify-center">{suffix}</div>
+      <div className="flex items-center justify-center">
+        {suffix || defaultSuffix}
+      </div>
     </div>
   );
 }

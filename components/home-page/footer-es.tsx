@@ -17,7 +17,7 @@ import { Section, Container } from "../craft";
 // Asset imports
 import Logo from "@/public/logo.svg";
 
-export default function Footer() {
+export default function FooterEs() {
   return (
     <footer>
       <Section>
@@ -37,18 +37,18 @@ export default function Footer() {
               <Balancer>FODMAPUY.</Balancer>
             </p>
           </div>
-          <div className="flex flex-col gap-2">
-            <h5>Website</h5>
+          {/* <div className="flex flex-col gap-2">
+            <h5>Sitio Web</h5>
             <Link href="/">Blog</Link>
-            <Link href="/">Authors</Link>
-            <Link href="/">Categories</Link>
-          </div>
-          <div className="flex flex-col gap-2">
+            <Link href="/">Autores</Link>
+            <Link href="/">Categorías</Link>
+          </div> */}
+          {/* <div className="flex flex-col gap-2">
             <h5>Legal</h5>
-            <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/terms-of-service">Terms of Service</Link>
-            <Link href="/cookie-policy">Cookie Policy</Link>
-          </div>
+            <Link href="/privacy-policy">Política de Privacidad</Link>
+            <Link href="/terms-of-service">Términos de Servicio</Link>
+            <Link href="/cookie-policy">Política de Cookies</Link>
+          </div> */}
         </Container>
         <Container className="not-prose flex flex-col justify-between gap-6 border-t md:flex-row md:items-center md:gap-2">
           {/* <div className="flex gap-2">
@@ -63,8 +63,8 @@ export default function Footer() {
             </Button>
           </div> */}
           <p className="text-muted-foreground">
-            © <a href="https://github.com/brijr/components">FODMAP UY</a>. All
-            rights reserved. 2024-.
+            © <a href="https://github.com/brijr/components">FODMAP UY</a>. Todos
+            los derechos reservados. 2024-.
           </p>
         </Container>
       </Section>

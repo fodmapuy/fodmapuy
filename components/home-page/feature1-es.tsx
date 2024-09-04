@@ -1,6 +1,9 @@
+// Layout
 import { Section, Container } from "@/components/craft";
 import Balancer from "react-wrap-balancer";
 import Link from "next/link";
+
+// Icons
 import { Coins, ArrowRight } from "lucide-react";
 
 type FeatureText = {
@@ -18,7 +21,7 @@ const featureText: FeatureText[] = [
     href: "/",
     description:
       "0Duissss aaaaaaute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    cta: "Learn More",
+    cta: "Aprende Más",
   },
   {
     icon: <Coins className="h-6 w-6" />,
@@ -26,7 +29,7 @@ const featureText: FeatureText[] = [
     href: "/",
     description:
       "1Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    cta: "Learn More",
+    cta: "Aprende Más",
   },
 ];
 
@@ -37,18 +40,18 @@ const singleFeatureText: FeatureText[] = [
     href: "/",
     description:
       "2Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    cta: "Learn More",
+    cta: "Aprende Más",
   },
 ];
 
-const Feature1 = () => {
+const Feature1Es = () => {
   return (
     <Section>
       <Container className="not-prose">
         <div className="flex flex-col items-center text-center">
           <h3 className="text-4xl max-w-2xl mx-auto">
             <Balancer>
-              Are you tired of feeling uncomfortable after meals?{" "}
+              ¿Estás cansado de sentirte incómodo después de las comidas?{" "}
             </Balancer>
           </h3>
         </div>
@@ -57,4 +60,4 @@ const Feature1 = () => {
   );
 };
 
-export default Feature1;
+export default Feature1Es;

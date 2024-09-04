@@ -26,32 +26,32 @@ import {
 } from "@/components/ui/chart";
 
 const chartData = [
-  { year: "2019", men: 400, women: 600 },
-  { year: "2020", men: 800, women: 1200 },
-  { year: "2021", men: 1200, women: 1800 },
-  { year: "2022", men: 1500, women: 2250 },
-  { year: "2023", men: 1800, women: 2700 },
-  { year: "2024", men: 2000, women: 3000 },
+  { year: "2019", hombres: 400, mujeres: 600 },
+  { year: "2020", hombres: 800, mujeres: 1200 },
+  { year: "2021", hombres: 1200, mujeres: 1800 },
+  { year: "2022", hombres: 1500, mujeres: 2250 },
+  { year: "2023", hombres: 1800, mujeres: 2700 },
+  { year: "2024", hombres: 2000, mujeres: 3000 },
 ];
 
 const chartConfig = {
-  men: {
-    label: "Men",
+  hombres: {
+    label: "Hombres",
     color: "hsl(var(--chart-2))",
   },
-  women: {
-    label: "Women",
+  mujeres: {
+    label: "Mujeres",
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig;
 
-export default function Chart15() {
+export default function Chart15Es() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>FODMAP Consultation Demand by Gender</CardTitle>
+        <CardTitle>Demanda de Consultas FODMAP por Género</CardTitle>
         <CardDescription>
-          Showing consultations for men and women from 2019 to 2024
+          Mostrando consultas para hombres y mujeres de 2019 a 2024
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -81,45 +81,45 @@ export default function Chart15() {
             />
             <ChartTooltip content={<ChartTooltipContent />} />
             <defs>
-              <linearGradient id="fillMen" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="fillHombres" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="var(--color-men)"
+                  stopColor="var(--color-hombres)"
                   stopOpacity={0.8}
                 />
                 <stop
                   offset="95%"
-                  stopColor="var(--color-men)"
+                  stopColor="var(--color-hombres)"
                   stopOpacity={0.1}
                 />
               </linearGradient>
-              <linearGradient id="fillWomen" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="fillMujeres" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="var(--color-women)"
+                  stopColor="var(--color-mujeres)"
                   stopOpacity={0.8}
                 />
                 <stop
                   offset="95%"
-                  stopColor="var(--color-women)"
+                  stopColor="var(--color-mujeres)"
                   stopOpacity={0.1}
                 />
               </linearGradient>
             </defs>
             <Area
-              dataKey="men"
+              dataKey="hombres"
               type="monotone"
-              fill="url(#fillMen)"
+              fill="url(#fillHombres)"
               fillOpacity={0.4}
-              stroke="var(--color-men)"
+              stroke="var(--color-hombres)"
               stackId="1"
             />
             <Area
-              dataKey="women"
+              dataKey="mujeres"
               type="monotone"
-              fill="url(#fillWomen)"
+              fill="url(#fillMujeres)"
               fillOpacity={0.4}
-              stroke="var(--color-women)"
+              stroke="var(--color-mujeres)"
               stackId="1"
             />
           </AreaChart>
@@ -129,11 +129,11 @@ export default function Chart15() {
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
-              400% increase in total consultations over 5 years{" "}
+              Aumento del 400% en consultas totales en 5 años{" "}
               <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Women consistently higher demand than men
+              Demanda consistentemente más alta en mujeres que en hombres
             </div>
           </div>
         </div>

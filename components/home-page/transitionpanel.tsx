@@ -1,13 +1,9 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { TransitionPanel } from "@/components/core/transition-panel";
 import { AnimatedCardBackgroundHover } from "@/components/ui/animatedcard";
 import { AnimatedCardBackgroundHover2 } from "@/components/ui/animatedcard2";
-
-// Update type definitions for the AnimatedCardBackgroundHover components
-type AnimatedCardProps = {
-  children: React.ReactNode;
-};
+import { motion, useMotionValue, useTransform, PanInfo } from "framer-motion";
 
 type ConsultationItem = {
   id: number;
@@ -15,7 +11,7 @@ type ConsultationItem = {
   description: string;
 };
 
-const ITEMS = [
+const ITEMS_EN = [
   {
     title: "Personalized meal plans",
     subtitle: "Refining Visual Harmony",
@@ -27,57 +23,153 @@ const ITEMS = [
     title: "One on one consultations",
     subtitle: "Expert FODMAP Support",
     content:
-      "Delve into how motion can be used as an artistic tool to tell stories and evoke emotions, making digital interactions feel more human and expressive.",
+      "Get personalized guidance and support from our FODMAP-trained dietitians to help you navigate your digestive health journey with confidence.",
   },
   {
     title: "Delicious low FODMAP recipes",
-    subtitle: "Mastering Motion Tools",
+    subtitle: "Tasty and Gut-Friendly",
     content:
-      "Gain proficiency in advanced techniques such as physics-based animations, 3D transformations, and complex sequencing to elevate your design skills and implementation.",
+      "Discover a world of flavor with our collection of delicious low FODMAP recipes, designed to satisfy your taste buds while keeping your gut happy.",
   },
 ];
 
-const CONSULTATION_ITEMS: ConsultationItem[] = [
+const ITEMS_ES = [
   {
-    id: 1,
-    title: "Expert Support",
-    description: "Work directly with FODMAP-trained dietitians",
+    title: "Planes de comida personalizados",
+    subtitle: "Refinando la Armonía Visual",
+    content: [
+      "¡Dile adiós a las molestias digestivas y hola a comidas deliciosas y amigables con el intestino! Nuestros Planes de Comida Personalizados están diseñados para eliminar las conjeturas al seguir la dieta FODMAP, asegurando que disfrutes cada bocado mientras apoyas tu salud digestiva.",
+    ],
   },
   {
-    id: 2,
-    title: "Customized Approach",
-    description: "Tailored advice based on your unique symptoms and lifestyle",
+    title: "Consultas uno a uno",
+    subtitle: "Soporte Experto en FODMAP",
+    content:
+      "Obtén orientación y apoyo personalizado de nuestros dietistas capacitados en FODMAP para ayudarte a navegar tu viaje de salud digestiva con confianza.",
   },
   {
-    id: 3,
-    title: "Comprehensive Assessment",
-    description: "In-depth analysis of your diet and digestive health",
-  },
-  {
-    id: 4,
-    title: "Step-by-Step Guidance",
-    description: "Navigate the FODMAP diet phases with confidence",
-  },
-  {
-    id: 5,
-    title: "Ongoing Support",
-    description: "Regular check-ins to monitor progress and adjust your plan",
-  },
-  {
-    id: 6,
-    title: "Education",
-    description: "Learn to identify trigger foods and expand your diet safely",
+    title: "Deliciosas recetas bajas en FODMAP",
+    subtitle: "Sabrosas y Amigables con el Intestino",
+    content:
+      "Descubre un mundo de sabor con nuestra colección de deliciosas recetas bajas en FODMAP, diseñadas para satisfacer tus papilas gustativas mientras mantienes tu intestino feliz.",
   },
 ];
 
-// Update the component imports with proper typing
-const TypedAnimatedCardBackgroundHover: React.FC<AnimatedCardProps> =
-  AnimatedCardBackgroundHover as React.FC<AnimatedCardProps>;
-const TypedAnimatedCardBackgroundHover2: React.FC<AnimatedCardProps> =
-  AnimatedCardBackgroundHover2 as React.FC<AnimatedCardProps>;
+interface TabsTransitionPanelProps {
+  language: "en" | "es";
+}
 
-export function TabsTransitionPanel() {
+interface CardRotateProps {
+  children: React.ReactNode;
+  onSendToBack: () => void;
+}
+
+function CardRotate({ children, onSendToBack }: CardRotateProps) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-100, 100], [60, -60]);
+  const rotateY = useTransform(x, [-100, 100], [-60, 60]);
+
+  function handleDragEnd(_: any, info: PanInfo) {
+    const threshold = 180;
+    if (
+      Math.abs(info.offset.x) > threshold ||
+      Math.abs(info.offset.y) > threshold
+    ) {
+      onSendToBack();
+    } else {
+      x.set(0);
+      y.set(0);
+    }
+  }
+
+  return (
+    <motion.div
+      className="absolute h-52 w-52 cursor-grab"
+      style={{ x, y, rotateX, rotateY }}
+      drag
+      dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
+      dragElastic={0.6}
+      whileTap={{ cursor: "grabbing" }}
+      onDragEnd={handleDragEnd}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function SwipeableStackCards() {
+  const initialCards = [
+    {
+      id: 1,
+      z: 4,
+      img: "https://i.pinimg.com/736x/d7/bd/94/d7bd94a0231456ac7f6885de1eccd943.jpg",
+    },
+    {
+      id: 2,
+      z: 3,
+      img: "https://i.pinimg.com/236x/fd/5d/14/fd5d146cf06e32d30139e4e3f37c993c.jpg",
+    },
+    {
+      id: 3,
+      z: 2,
+      img: "https://i.pinimg.com/564x/c6/f8/e9/c6f8e988912e469686c431cc680ef49e.jpg",
+    },
+    {
+      id: 4,
+      z: 1,
+      img: "https://i.pinimg.com/564x/1a/d6/b1/1ad6b124fee1e478689a9fda0c74e92f.jpg",
+    },
+    {
+      id: 5,
+      z: 0,
+      img: "https://i.pinimg.com/236x/bf/1d/d9/bf1dd9251d0e7f1936bdb9d95a480295.jpg",
+    },
+  ];
+  const [cards, setCards] = useState(initialCards);
+
+  const sendToBack = (id: number) => {
+    setCards((prev) => {
+      const newCards = [...prev];
+      const index = newCards.findIndex((card) => card.id === id);
+      const [card] = newCards.splice(index, 1);
+      newCards.unshift(card);
+      return newCards;
+    });
+  };
+
+  return (
+    <div className="relative h-52 w-52" style={{ perspective: 600 }}>
+      {cards.map((card, index) => {
+        return (
+          <CardRotate key={card.id} onSendToBack={() => sendToBack(card.id)}>
+            <motion.div
+              className="h-full w-full rounded-lg"
+              animate={{
+                rotateZ: (cards.length - index - 1) * 4,
+                scale: 1 + index * 0.06 - cards.length * 0.06,
+                transformOrigin: "90% 90%",
+              }}
+              initial={false}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            >
+              <img
+                src={card.img}
+                alt="card"
+                className="pointer-events-none h-full w-full rounded-lg object-cover"
+              />
+            </motion.div>
+          </CardRotate>
+        );
+      })}
+    </div>
+  );
+}
+
+export function TabsTransitionPanel({ language }: TabsTransitionPanelProps) {
   const [activeIndex, setActiveIndex] = React.useState(0);
+
+  const ITEMS = language === "en" ? ITEMS_EN : ITEMS_ES;
 
   return (
     <div>
@@ -124,34 +216,15 @@ export function TabsTransitionPanel() {
                 )}
               </div>
               {index === 0 && (
-                <TypedAnimatedCardBackgroundHover>
-                  <div className="p-4">
-                    <h4 className="text-lg font-semibold mb-2">
-                      Personalized Meal Plans
-                    </h4>
-                    <p>
-                      Discover the perfect balance of nutrition and taste with
-                      our expertly crafted meal plans.
-                    </p>
-                  </div>
-                </TypedAnimatedCardBackgroundHover>
+                <AnimatedCardBackgroundHover language={language} />
               )}
               {index === 1 && (
-                <TypedAnimatedCardBackgroundHover2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-                    {CONSULTATION_ITEMS.map((consultationItem) => (
-                      <div
-                        key={consultationItem.id}
-                        className="bg-white p-4 rounded-lg shadow"
-                      >
-                        <h4 className="text-lg font-semibold mb-2">
-                          {consultationItem.title}
-                        </h4>
-                        <p>{consultationItem.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </TypedAnimatedCardBackgroundHover2>
+                <AnimatedCardBackgroundHover2 language={language} />
+              )}
+              {index === 2 && (
+                <div className="flex justify-center mt-4">
+                  <SwipeableStackCards />
+                </div>
               )}
             </div>
           ))}

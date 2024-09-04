@@ -165,7 +165,7 @@ const CardDetails = ({ title, font, index }: CardDetailsProps) => {
 
 export default function FlippingCard({ list }: FlippingCardProps) {
   return (
-    <div className="grid grid-cols-3 gap-5 max-sm:grid-cols-2">
+    <div className="grid grid-cols-3 gap-5 max-sm:grid-cols-1">
       {list.map((item, index) => (
         <CardDetails
           key={`card_${index}`}
