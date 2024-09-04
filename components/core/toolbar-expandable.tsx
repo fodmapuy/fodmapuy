@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import type React from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Folder, MessageCircle, User, WalletCards } from "lucide-react";
@@ -34,7 +35,8 @@ const transition = {
   duration: 0.25,
 };
 
-const ITEMS = [
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+const ITEMS: any[] = [
   // ... (ITEMS array remains unchanged)
 ];
 

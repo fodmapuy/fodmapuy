@@ -1,6 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useScroll } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Main, Section, Container } from "@/components/craft";
@@ -20,14 +19,42 @@ import ContactForm from "@/components/ContactFormEs";
 import Timeline from "@/components/home-page/timeline";
 
 export default function Page() {
-  const { scrollY } = useScroll();
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const router = useRouter();
 
+  const handleIntersection = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target.id !== activeSection) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    },
+    [activeSection]
+  );
+
   useEffect(() => {
-    const unsubscribe = scrollY.onChange(setScrollPosition);
-    return () => unsubscribe();
-  }, [scrollY]);
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.1, // Detect when 10% of the section is visible
+    });
+
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    // Set initial active section to "welcome" if no section is intersecting
+    if (!activeSection) {
+      const isAnyIntersecting = Array.from(sections).some((section) =>
+        observer
+          .takeRecords()
+          .find((entry) => entry.target === section && entry.isIntersecting)
+      );
+      if (!isAnyIntersecting) {
+        setActiveSection("welcome");
+      }
+    }
+
+    return () => observer.disconnect();
+  }, [handleIntersection, activeSection]);
 
   useEffect(() => {
     router.push("/es");
@@ -36,7 +63,7 @@ export default function Page() {
   return (
     <div className="relative">
       <div className="hidden lg:block fixed left-0 top-16 h-[calc(100vh-4rem)] w-48 z-10">
-        <Timeline className="h-full w-full" scrollPosition={scrollPosition} />
+        <Timeline className="h-full w-full" activeSection={activeSection} />
       </div>
       <Main>
         <Section id="welcome">

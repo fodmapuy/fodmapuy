@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { TransitionPanel } from "@/components/core/transition-panel";
 import { AnimatedCardBackgroundHover } from "@/components/ui/animatedcard";
 import { AnimatedCardBackgroundHover2 } from "@/components/ui/animatedcard2";
@@ -153,10 +154,12 @@ function SwipeableStackCards() {
               initial={false}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
             >
-              <img
+              <Image
                 src={card.img}
                 alt="card"
                 className="pointer-events-none h-full w-full rounded-lg object-cover"
+                width={208}
+                height={208}
               />
             </motion.div>
           </CardRotate>

@@ -6,10 +6,10 @@ import { AnimatedCardBackgroundHover } from "@/components/ui/animatedcard";
 
 type AnimatedCardProps = {
   children: React.ReactNode;
+  language: "en" | "es";
 };
 
-const TypedAnimatedCardBackgroundHover: React.FC<AnimatedCardProps> =
-  AnimatedCardBackgroundHover as React.FC<AnimatedCardProps>;
+const TypedAnimatedCardBackgroundHover = AnimatedCardBackgroundHover as React.FC<AnimatedCardProps>;
 
 type Item = {
   title: string;
@@ -87,7 +87,7 @@ export function TabsTransitionOneOnOne() {
                 )}
               </div>
               {index === 0 && (
-                <TypedAnimatedCardBackgroundHover>
+                <TypedAnimatedCardBackgroundHover language="en">
                   <div className="p-4">
                     <h4 className="text-lg font-semibold mb-2">
                       Personalized Meal Plans

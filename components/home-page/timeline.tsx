@@ -24,12 +24,12 @@ const totalLines = 30;
 
 interface TimelineProps {
   className?: string;
-  scrollPosition: number;
+  activeSection?: string | null;
 }
 
 export default function Timeline({
   className = "",
-  scrollPosition,
+  activeSection: propActiveSection,
 }: TimelineProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState<string>("welcome");
@@ -37,32 +37,14 @@ export default function Timeline({
   const isSpanish = pathname.startsWith("/es");
   const currentSections = isSpanish ? sections.es : sections.en;
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    const updateActiveSection = () => {
-      const sectionElements = document.querySelectorAll("section[id]");
-      let newActiveSection = "welcome";
+    if (propActiveSection) {
+      setActiveSection(propActiveSection);
+    }
+  }, [propActiveSection]);
 
-      sectionElements.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        if (
-          rect.top <= window.innerHeight / 2 &&
-          rect.bottom >= window.innerHeight / 2
-        ) {
-          newActiveSection = section.id;
-        }
-      });
-
-      setActiveSection(newActiveSection);
-    };
-
-    updateActiveSection();
-    window.addEventListener("scroll", updateActiveSection);
-
-    return () => {
-      window.removeEventListener("scroll", updateActiveSection);
-    };
-  }, [scrollPosition, isSpanish]);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setActiveSection("welcome");
   }, [isSpanish]);
